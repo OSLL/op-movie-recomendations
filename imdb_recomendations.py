@@ -31,13 +31,6 @@ Nconst = 'nconst'
 Directors = 'directors'
 #
 
-def filter_names_by_args(file,name,column):
-	names = parse_tsv(file)
-	check_name = names[column].str.contains(''.join(map(lambda x: '(?=.*'+x+')',name)),na=False)
-	filtered_names = names[check_name]
-	return filtered_names
-
-
 def search(args):
 	# Filtering all films by dates,title and genre 
 	films = parse_tsv(title_basics)
