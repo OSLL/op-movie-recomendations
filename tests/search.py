@@ -4,6 +4,8 @@ sys.path.append('../')
 import imdb_recomendations
 import argparse
 
+import os
+os.chdir(os.path.dirname(os.getcwd()))
 # Test search only by actor name
 print 'Test 1:'
 imdb_recomendations.search(argparse.Namespace(actor_name=['John'], director_name=[''], genre='', title='',
