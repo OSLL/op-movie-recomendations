@@ -35,7 +35,7 @@ def search(args):
 	# Filtering all films by dates,title and genre 
 	films = parse_tsv(title_basics)
 	films[startYear] = pd.to_numeric(films[startYear], errors='coerce').fillna(0).astype(int)
-	check_genre = films[genres].str.contains(''.join(map(lambda x: '(?=.*'+x+')',args.genre)),na=False)
+	check_genre = films[genres].str.contains(''.join(map(lambda x: '(?i)(?=.*'+x+')',args.genre)),na=False)
 	title_check = films[primaryTitle].str.contains(' '.join(args.title))|films[originalTitle].str.contains(' '.join(args.title))
 	date_check = (films[startYear]> int(args.years_after)) & (films[startYear] < int(args.years_before))
 	filtered_films = films[check_genre&title_check&date_check]
